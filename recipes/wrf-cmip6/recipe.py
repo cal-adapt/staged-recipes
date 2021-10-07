@@ -23,7 +23,7 @@ def preproc(ds, filename):
     ds = ds.drop('Times')
     return ds
 
-dates = pd.date_range('1950-09-01', '1950-12-31', freq='6H')
+dates = pd.date_range('1950-09-01', '2020-08-31 23:59:00', freq='6H')
 tdim = ConcatDim('time', dates, nitems_per_file=1)
 pattern = FilePattern(path.format, tdim)
 recipe = XarrayZarrRecipe(pattern, process_input=preproc, inputs_per_chunk=2500)
